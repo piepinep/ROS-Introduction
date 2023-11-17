@@ -1,0 +1,6 @@
+int32 a
+int32 b
+---
+int32 result
+---
+float64 percent

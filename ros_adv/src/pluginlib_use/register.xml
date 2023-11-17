@@ -1,0 +1,8 @@
+<library path="lib/libpolygons" >
+    <class type="polygons_ns::Triangle" base_class_type="polygon_ns::PolygonBase"> 
+        <description>Triangle class</description>
+    </class>
+    <class type="polygons_ns::Square" base_class_type="polygon_ns::PolygonBase"> 
+        <description>Square class</description>
+    </class>
+</library>

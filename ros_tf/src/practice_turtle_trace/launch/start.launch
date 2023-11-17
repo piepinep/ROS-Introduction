@@ -1,0 +1,24 @@
+<launch>
+    <!-- 1. 启动节点gui及键盘控制 -->
+    <node pkg="turtlesim" type="turtlesim_node" name="turtle1" output="screen" />
+    <node pkg="turtlesim" type="turtle_teleop_key" name="key" output="screen" />
+
+    <!-- 2. 创建新的乌龟 -->
+    <node pkg="practice_turtle_trace" type="spawn_tutle" name="turtle2" output="screen" />
+
+    <!-- 3. 启动两只乌龟相对世界坐标系的发布者 -->
+    <!-- 
+        1. 使用同一个节点, 但是节点启动两次
+        2. 节点启动动态传参
+     -->
+    <node pkg="practice_turtle_trace" type="publish_turtle_pose" name="pub1" args="turtle1" output="screen" />
+    <node pkg="practice_turtle_trace" type="publish_turtle_pose" name="pub2" args="turtle2" output="screen" />
+
+    <!-- 
+        4. 订阅 turtle1, turtle2 相对于世界坐标系的发布消息
+        并转换成turtle2 相对于turtle1的坐标关系
+        再生成速度消息
+    -->
+    <node pkg="practice_turtle_trace" type="turtle_trace" name="control" output="screen" />
+
+</launch>

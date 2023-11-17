@@ -1,0 +1,85 @@
+<robot name="laser" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="stick_radius" value="0.01" />
+    <xacro:property name="stick_length" value="0.15" />
+    <xacro:property name="stick_mass" value="0.1" />
+
+    <xacro:property name="laser_radius" value="0.03" />
+    <xacro:property name="laser_length" value="0.05" />
+    <xacro:property name="laser_mass" value="0.15" />
+    
+    <xacro:property name="joint_stick_x" value="0" />
+    <xacro:property name="joint_stick_y" value="0" />
+    <xacro:property name="joint_stick_z" value="${stick_length / 2 + base_length / 2}" />
+
+    <xacro:property name="joint_laser_x" value="0" />
+    <xacro:property name="joint_laser_y" value="0" />
+    <xacro:property name="joint_laser_z" value="${laser_length / 2 + stick_length / 2}" />
+
+
+    <link name="stick">
+        <visual>
+            <geometry> 
+                <cylinder radius="${stick_radius}" length="${stick_length}" />
+            </geometry>
+
+            <material name="yellow">
+                <color rgba="0.8 0.5 0 0.5" />
+            </material>
+        </visual>
+
+        <collision>
+            <geometry> 
+                <cylinder radius="${stick_radius}" length="${stick_length}" />
+            </geometry>
+
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </collision>
+
+        <xacro:cylinder_inertial_matrix m="${stick_mass}" r="${stick_radius}" h="${stick_length}" />
+    </link>
+
+    <gazebo reference="stick">
+        <material>Gazebo/Gray</material>
+    </gazebo>   
+
+    <joint name="stick2base" type="fixed">
+        <parent link="base_link" />
+        <child link="stick" />
+
+        <origin xyz="${joint_stick_x} ${joint_stick_y} ${joint_stick_z}" rpy="0 0 0" />
+    </joint>
+
+    <!-- <link name="laser">
+        <visual>
+            <geometry> 
+                <cylinder radius="${laser_radius}" length="${laser_length}" />
+            </geometry>
+
+            <material name="black">
+                <color rgba="0.8 0.5 0 0.5" />
+            </material>
+        </visual>
+
+        <collision>
+            <geometry> 
+                <cylinder radius="${laser_radius}" length="${laser_length}" />
+            </geometry>
+
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </collision>
+
+        <xacro:cylinder_inertial_matrix m="${laser_mass}" r="${laser_radius}" h="${laser_length}" />
+    </link>
+
+    <gazebo reference="laser">
+        <material>Gazebo/Black</material>
+    </gazebo>   
+
+    <joint name="laser2stick" type="fixed">
+        <parent link="stick" />
+        <child link="laser" />
+
+        <origin xyz="${joint_laser_x} ${joint_laser_y} ${joint_laser_z}" rpy="0 0 0" />
+    </joint> -->
+</robot>

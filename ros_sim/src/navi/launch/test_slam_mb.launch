@@ -1,0 +1,8 @@
+<launch>
+    <!-- 启动SLAM节点 -->
+    <include file="$(find navi)/launch/gmapping_node.launch" />
+    <!-- 运行move_base节点 -->
+    <include file="$(find navi)/launch/move_base_node.launch" />
+    
+    <include file="$(find navi)/launch/rviz_node.launch" />
+</launch>

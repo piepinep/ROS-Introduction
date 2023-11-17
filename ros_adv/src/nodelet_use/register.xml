@@ -1,0 +1,5 @@
+<library path="lib/libmyplus" >
+    <class type="my_nodelet::MyPlus" base_class_type="nodelet::Nodelet" name="nodelet_use/MyPlus"> 
+        <description>my plus nodelet</description>
+    </class>
+</library>

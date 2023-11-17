@@ -1,0 +1,48 @@
+<robot name="camera" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+    <xacro:property name="thick" value="0.02" />  <!-- x方向 -->
+    <xacro:property name="width" value="0.02" />  <!-- y方向 -->
+    <xacro:property name="height" value="0.02" /> <!-- z方向 -->
+
+    <xacro:property name="mass" value="0.01" /> 
+    
+    <!-- bias -->
+    <xacro:property name="biasx" value="${base_radius * 0.8}" />
+    <xacro:property name="biasy" value="0" />
+    <xacro:property name="biasz" value="${base_length / 2 + height / 2}" />
+
+    <link name="camera">
+        <visual>
+            <geometry>
+                <box size="${thick} ${width} ${height}" />
+            </geometry>
+
+            <origin xyz="0 0 0" rpy="0 0 0" />
+
+            <material name="black">
+                <color rgb="0 0 0 0.4" />
+            </material>
+        </visual>
+
+        <collision>
+            <geometry>
+                <box size="${thick} ${width} ${height}" />
+            </geometry>
+
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </collision>
+
+        <xacro:Box_inertial_matrix m="${mass}" l="${thick}" w="${width}" h="${height}"  />
+    </link>
+
+    <gazebo reference="camera">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+    <joint name="camera2base" type="fixed">
+        <parent link="base_link" />
+        <child link="camera" />
+        <origin xyz="${biasx} ${biasy} ${biasz}" rpy="0 0 0" />
+    </joint>
+</robot>

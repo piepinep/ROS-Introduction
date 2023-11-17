@@ -1,0 +1,8 @@
+<launch>
+    <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan">
+        <remap from="image" to="/camera/depth/image_raw" />
+        <param name="output_frame_id" value="stick"  />
+    </node>
+
+    <include file="$(find navi)/launch/rviz_node.launch" />
+</launch>

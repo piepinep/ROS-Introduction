@@ -1,0 +1,4 @@
+<launch>
+    <node name="hello_ros_cpp" pkg="helloros" type="hello_ros_cpp" output="screen" />
+    <node name="hello_ros_py" pkg="helloros" type="hello_ros_py.py" output="screen" />
+</launch>

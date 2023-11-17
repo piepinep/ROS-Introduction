@@ -1,0 +1,13 @@
+<launch>
+    <!-- map_server -->
+    <include file="$(find navi)/launch/map_server_read_node.launch" />
+    
+    <!-- amcl -->
+    <include file="$(find navi)/launch/amcl_node.launch" />
+    
+    <!-- movebase -->
+    <include file="$(find navi)/launch/move_base_node.launch" />
+
+    <!-- rviz -->
+    <include file="$(find navi)/launch/rviz_node.launch" />
+</launch>

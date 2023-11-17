@@ -1,0 +1,4 @@
+<launch>
+	<arg name="file" value="maps/nav.yaml" />
+	<node name="map_server" pkg="map_server" type="map_server" args="$(find navi)/$(arg file)" />
+</launch>
